@@ -60,7 +60,7 @@ group :development, :test do
   gem "standard"
   gem "simplecov"
   gem "webdrivers"
-  gem 'rspec-rails', '~> 6.0.0'
+  gem "rspec-rails", "~> 6.0.0"
   gem "factory_bot_rails"
   gem "capybara"
   gem "database_cleaner"
