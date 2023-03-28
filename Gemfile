@@ -54,6 +54,9 @@ gem "bootsnap", require: false
 # Authentication
 gem "devise"
 
+# Audit
+gem "paper_trail"
+
 group :development, :test do
   gem "byebug", platform: :mri
   gem "rubocop-rails"
