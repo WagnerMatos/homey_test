@@ -1,12 +1,12 @@
-<div id="<%= dom_id project %>">
-  <p>
-    <strong>Name:</strong>
-    <%= project.name %>
-  </p>
-
-  <p>
-    <strong>Project status:</strong>
-    <%= project.project_status %>
-  </p>
-
-</div>
+<li class="pb-3 sm:pb-4">
+  <div class="flex items-center space-x-4">
+    <div class="flex-1 min-w-0">
+      <%= link_to project, class: "text-lg font-medium text-gray-900 truncate dark:text-white" do %>
+        <%= project.name %>
+      <% end %>
+    </div>
+    <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+      <%= project.project_status %>
+    </div>
+  </div>
+</li>

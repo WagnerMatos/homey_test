@@ -1,14 +1,41 @@
-<p style="color: green"><%= notice %></p>
+<!--<p style="color: green"><%#= notice %></p>-->
 
-<h1>Projects</h1>
+<!--<h1>Projects</h1>-->
 
-<div id="projects">
-  <% @projects.each do |project| %>
-    <%= render project %>
-    <p>
-      <%= link_to "Show this project", project %>
-    </p>
-  <% end %>
-</div>
+<!--<div id="projects">-->
+<%# @projects.each do |project| %>
+<%#= render project %>
+<!--    <p>-->
+<%#= link_to "Show this project", project %>
+<!--    </p>-->
+<%# end %>
+<!--</div>-->
 
-<%= link_to "New project", new_project_path %>
+<%#= link_to "New project", new_project_path %>
+
+
+<!--<section class="bg-gray-50 dark:bg-gray-900">-->
+<!--  <div class="flex flex-col items-center justify-center px-6 py-8 md:h-screen lg:py-0">-->
+<!--    <h1 class="text-center text-xl font-bold mb-8">Projects</h1>-->
+<!--    <ul class="w-8/12 divide-y divide-gray-200 dark:divide-gray-700">-->
+<%#= render projects %>
+<!--    </ul>-->
+<%#= link_to "New project", new_project_path, class: "mt-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+<!--  </div>-->
+<!--</section>-->
+
+
+<section class="bg-gray-50 dark:bg-gray-900">
+  <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+    <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-lg xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+      <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+        <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+          Projects </h1>
+        <ul class="w-8/12 divide-y divide-gray-200 dark:divide-gray-700 pb-8">
+          <%= render projects %>
+        </ul>
+        <%= link_to "New project", new_project_path, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+      </div>
+    </div>
+  </div>
+</section>

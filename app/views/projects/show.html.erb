@@ -1,10 +1,80 @@
-<p style="color: green"><%= notice %></p>
+<section class="bg-gray-50 dark:bg-gray-900">
+  <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+    <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-4xl xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+      <p style="color: green"><%= notice %></p>
 
-<%= render @project %>
+      <div class="flex items-center px-8 py-8">
+        <div class="flex-1 min-w-0">
+          <%= link_to project, class: "text-lg font-medium text-gray-900 truncate dark:text-white" do %>
+            <%= project.name %>
+          <% end %>
+        </div>
+        <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+          <%= project.project_status.humanize %>
+        </div>
+      </div>
 
-<div>
-  <%= link_to "Edit this project", edit_project_path(@project) %> |
-  <%= link_to "Back to projects", projects_path %>
+      <div class="flex items-center px-8 py-8">
+        <%= form_for(project, url: project_path(project), method: :patch) do |form| %>
+          <%= form.fields_for :comments, Comment.new do |email_fields| %>
+            <%= render "comments/form", form: email_fields %>
+          <% end %>
 
-  <%= button_to "Destroy this project", @project, method: :delete %>
-</div>
+          <%= button_tag :submit do %>
+            <i class="fa-solid fa-check-circle"></i>
+            <span> Add comment </span>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="flex items-center px-8 py-8">
+        <%= form_for(project, url: project_path(project), method: :patch) do |form| %>
+          <%= form.label :project_status, class: "block mb-8" do %>
+            <span>Project Status</span>
+            <span class="relative mt-1.5 flex">
+              <%= form.select :project_status, select_values_for_projects, {}, { value: project.project_status, onchange: 'this.form.submit();', class: "w-full rounded-lg border border-slate-300 bg-white px-3 py-2 pr-9 hover:z-10 hover:border-slate-400 focus:z-10 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accents" } %>
+          </span>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="flex items-center px-8 py-8">
+        <ul class="w-8/12 divide-y divide-gray-200 dark:divide-gray-700 pb-8">
+          <% project.versions.each do |version| %>
+            <li class="pb-3 sm:pb-4">
+              <div class="flex items-center space-x-4">
+                <div class="flex-1 min-w-0">
+                  <% if version.changeset.present? && version.changeset["project_status"].present? %>
+                    <%= "Status change from: #{version.changeset["project_status"].first.humanize} to #{version.changeset["project_status"].second.humanize} by #{User.find(version.whodunnit).full_name}, on: #{version.created_at}" %>
+                  <% end %>
+                </div>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div class="flex items-center px-8 py-8">
+        <ul class="w-8/12 divide-y divide-gray-200 dark:divide-gray-700 pb-8">
+          <% project.comments.each do |comment| %>
+            <li class="pb-3 sm:pb-4">
+              <div class="flex items-center space-x-4">
+                <div class="flex-1 min-w-0">
+                  <%= comment.body %>
+                  <%= comment.created_at %>
+                </div>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div class="flex items-center px-8 py-8">
+        <%= link_to "Edit this project", edit_project_path(project), class: "mr-4" %>
+        <%= link_to "Back to projects", projects_path, class: "mr-4" %>
+
+        <%= button_to "Destroy this project", project, method: :delete %>
+      </div>
+    </div>
+  </div>
+</section>

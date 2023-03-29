@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
 class Project < ApplicationRecord
-  has_paper_trail
+  include Commentable
+
+  accepts_nested_attributes_for :comments
+
+  has_paper_trail only: [:project_status]
 
   enum project_status: {
     active: 0,
