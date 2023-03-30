@@ -1,9 +1,5 @@
-<h1>New project</h1>
-
-<%= render "form", project: @project %>
-
-<br>
-
-<div>
-  <%= link_to "Back to projects", projects_path %>
+<div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+  <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">New project</h1>
+  <%= render "form", project: @project %>
+  <%= link_to "Back to projects", projects_path, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
 </div>

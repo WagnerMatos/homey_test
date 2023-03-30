@@ -1,12 +1,10 @@
-<div id="<%= dom_id project %>">
-  <p>
-    <strong>Name:</strong>
-    <%= project.name %>
-  </p>
-
-  <p>
-    <strong>Project status:</strong>
-    <%= project.project_status %>
-  </p>
-
-</div>
+<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+  <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+    <%= link_to project, class: "text-lg font-medium text-gray-900 truncate dark:text-white" do %>
+      <%= project.name %>
+    <% end %>
+  </th>
+  <td class="px-6 py-4">
+    <%= project.project_status.humanize %>
+  </td>
+</tr>

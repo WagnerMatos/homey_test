@@ -65,7 +65,7 @@ group :development, :test do
   gem "webdrivers"
   gem "rspec-rails", "~> 6.0.0"
   gem "factory_bot_rails"
-  gem "capybara"
+  gem "capybara", "~> 3.38"
   gem "database_cleaner"
   gem "shoulda-matchers"
 end

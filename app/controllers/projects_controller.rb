@@ -4,10 +4,11 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: %i[ show edit update destroy ]
 
   def index
-    @projects = Project.all
+    render locals: {projects: Project.all}
   end
 
   def show
+    render locals: {project: set_project}
   end
 
   def new
@@ -55,10 +56,10 @@ class ProjectsController < ApplicationController
   private
 
   def set_project
-    @project = Project.find(params[:id])
+    @project ||= Project.find(params[:id])
   end
 
   def project_params
-    params.require(:project).permit(:name, :project_status)
+    params.require(:project).permit(:name, :project_status, comments_attributes: [:id, :body, :_destroy])
   end
 end
