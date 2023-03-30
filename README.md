@@ -8,7 +8,9 @@ I have decided to use SQLite for easy of use and simplicity but its unlikely SQL
 
 Please note I have made some opinionated decisions as part of the setup (gems, lint, configuration, etc). This was mostly for convenience as I use scripts/snippets and defaults when starting new personal projects. Normally I’d discuss and consider each option with the team before adopting these defaults.
 
-Please note there is one feature test that is missing, which is the test that checks whether the status changes accordingly. I was having an issue with the setup - the `js: true` flag was not working therefore the test wasn't passing. I've spent some  time debugging and the issue was due to configuration / gem versions but I needed a bit more time to get to the bottom of it however I was conscious I was running out of time so I decided to remove it altogether. 
+Please note there is one feature test that is missing, which is the test that checks whether the status changes accordingly. I was having an issue with the setup - the `js: true` flag was not working therefore the test wasn't passing. I've spent some  time debugging and the issue was due to configuration / gem versions but I needed a bit more time to get to the bottom of it however I was conscious I was running out of time so I decided to remove it altogether.
+
+There are lots of small things that could be improved (relationship between Project and versions, maybe use a decorator or ViewComponents for better handling view logic, etc) but I've decided to leave them out for the sake of time.
 
 ### Questions
 
