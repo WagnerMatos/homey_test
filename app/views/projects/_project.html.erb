@@ -1,12 +1,10 @@
-<li class="pb-3 sm:pb-4">
-  <div class="flex items-center space-x-4">
-    <div class="flex-1 min-w-0">
-      <%= link_to project, class: "text-lg font-medium text-gray-900 truncate dark:text-white" do %>
-        <%= project.name %>
-      <% end %>
-    </div>
-    <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-      <%= project.project_status %>
-    </div>
-  </div>
-</li>
+<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+  <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+    <%= link_to project, class: "text-lg font-medium text-gray-900 truncate dark:text-white" do %>
+      <%= project.name %>
+    <% end %>
+  </th>
+  <td class="px-6 py-4">
+    <%= project.project_status.humanize %>
+  </td>
+</tr>
